@@ -98,10 +98,10 @@ end
 # CHALLENGE:
 # 4. How many activities does each salesperson have?
 
-bobsaget_id = Salesperson.find_by({ "email" => "bobsaget@gmail.com" })["id"]
-
-puts "Tim Jones: #{ Activity.where({ "salesperson_id" => timjones_id }).count } activities"
-puts "Bob Saget: #{ Activity.where({ "salesperson_id" => bobsaget_id }).count } activities"
+for person in Salesperson.all
+    number = Activity.where({ "salesperson_id" => person["id"] }).count
+    puts "#{person["first_name"]} #{person["last_name"]}: #{number} activities"
+end
 
 # ---------------------------------
 # Ben Block: 3 activities
