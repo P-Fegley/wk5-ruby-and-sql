@@ -63,7 +63,17 @@ puts apple.inspect
 
 
 # 5. read a row's column value
+puts apple["url"] # this works because the find_by returns the row, not an array
+
 
 # 6. update a row's column value
+amazon = Company.find_by({ "name" => "Amazon"}) # returns the row
+# puts amazon.inspect
+amazon["url"] = "https://amazon.com" # treat it like a hash
+amazon.save # updates the database
+
 
 # 7. delete a row
+google = Company.find_by({ "name" => "Google" })
+google.destroy # there is a 'delete' command, but don't use it. 'destroy' has extra security
+    # don't need to save this, destroy is already a save command
